@@ -5,8 +5,11 @@ import axios from "axios";
 
 const API_PREFIX = import.meta.env.VITE_API_PREFIX;
 
-function Task({ task, currentUser, setEditTask, fetchTasks }) {
+function Task({ task, currentUser, setEditTask, fetchTasks, users }) {
   const isTaskCreator = task.creator._id == currentUser._id;
+  const isTaskAssignee = task.assignee?._id == currentUser._id;
+
+  const canEdit = isTaskCreator || isTaskAssignee;
 
   let backgroundColor = "bg-primary-subtle";
   if (task.status == "In progress") {
@@ -52,8 +55,9 @@ function Task({ task, currentUser, setEditTask, fetchTasks }) {
             aria-label="priority options"
             size="sm"
             className="mt-2"
+            disabled={!canEdit}
             value={task.priority}
-            disabled={!isTaskCreator}
+            onChange={(e) => updateTask(task._id, { priority: e.target.value })}
           >
             <option value="Low">Low 🟢</option>
             <option value="Medium">Medium 🟡</option>
@@ -65,9 +69,9 @@ function Task({ task, currentUser, setEditTask, fetchTasks }) {
             aria-label="priority options"
             size="sm"
             className="mt-2"
+            disabled={!canEdit}
             value={task.status}
-            disabled={!isTaskCreator}
-            onChange={(e) => updateTask(task._id, e.target.value)}
+            onChange={(e) => updateTask(task._id, { status: e.target.value })}
           >
             <option value="Planning">Planning 🐝</option>
             <option value="To do">To do 🦔</option>
@@ -75,38 +79,58 @@ function Task({ task, currentUser, setEditTask, fetchTasks }) {
             <option value="Done">Done 💐</option>
           </Form.Select>
 
-          <div className="d-flex mt-3">
-            <Button variant="primary" size="sm" className="w-100 mx-1">
-              Assign
-            </Button>
+          <div className="d-flex mt-2">
+            {canEdit && (
+              <Button
+                variant="warning"
+                size="sm"
+                className="w-100 mx-1"
+                onClick={() => setEditTask(task)}
+              >
+                Edit
+              </Button>
+            )}
             {isTaskCreator && (
-              <>
-                <Button
-                  variant="warning"
-                  size="sm"
-                  className="w-100 mx-1"
-                  onClick={() => setEditTask(task)}
-                >
-                  Edit
-                </Button>
-                <Button
-                  variant="danger"
-                  size="sm"
-                  className="w-100 mx-1"
-                  onClick={() => deleteTask(task._id)}
-                >
-                  Delete
-                </Button>
-              </>
+              <Button
+                variant="danger"
+                size="sm"
+                className="w-100 mx-1"
+                onClick={() => deleteTask(task._id)}
+              >
+                Delete
+              </Button>
             )}
           </div>
           <div className="mt-3">
-            <Card.Subtitle className="mb-1 text-muted">
-              Creator: {task.creator.fullName}
-            </Card.Subtitle>
-            <Card.Subtitle className="mb-1 text-muted">
-              Assignee: Madeline
-            </Card.Subtitle>
+            {/* Creator */}
+            <Form.Select
+              size="sm"
+              className="mt-2"
+              disabled={true}
+              onChange={(e) =>
+                updateTask(task._id, { priority: e.target.value })
+              }
+            >
+              <option value="">👤 Creator: {task.creator.fullName}</option>
+            </Form.Select>
+            {/* Assignee */}
+            <Form.Select
+              size="sm"
+              className="mt-2"
+              disabled={!canEdit}
+              value={task.assignee?._id}
+              onChange={(e) =>
+                updateTask(task._id, { assignee: e.target.value })
+              }
+            >
+              <option value="">Unassigned</option>
+              {/* Shows all users in database */}
+              {users.map((u) => (
+                <option value={u._id} key={u._id}>
+                  👤 Assignee: {u.fullName} ({u.department})
+                </option>
+              ))}
+            </Form.Select>
           </div>
         </Card.Body>
         <Card.Footer className="text-muted">

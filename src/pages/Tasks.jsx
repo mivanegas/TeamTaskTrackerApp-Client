@@ -13,9 +13,11 @@ function Tasks({ currentUser }) {
   const [inprogressTasks, setInprogressTasks] = useState([]);
   const [doneTasks, setDoneTasks] = useState([]);
   const [editTask, setEditTask] = useState(null);
+  const [users, setUsers] = useState(null);
 
   useEffect(() => {
     fetchTasks();
+    fetchUsers();
   }, []);
 
   async function fetchTasks() {
@@ -26,6 +28,15 @@ function Tasks({ currentUser }) {
       setTodoTasks(data.tasks.filter((t) => t.status == "To do"));
       setInprogressTasks(data.tasks.filter((t) => t.status == "In progress"));
       setDoneTasks(data.tasks.filter((t) => t.status == "Done"));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchUsers() {
+    try {
+      const { data } = await axios.get(`${API_PREFIX}/users`);
+      setUsers(data.users);
     } catch (error) {
       console.log(error);
     }
@@ -51,6 +62,7 @@ function Tasks({ currentUser }) {
               currentUser={currentUser}
               setEditTask={setEditTask}
               fetchTasks={fetchTasks}
+              users={users}
             />
           ))}
         </Col>
@@ -67,6 +79,7 @@ function Tasks({ currentUser }) {
               currentUser={currentUser}
               setEditTask={setEditTask}
               fetchTasks={fetchTasks}
+              users={users}
             />
           ))}
         </Col>
@@ -83,6 +96,7 @@ function Tasks({ currentUser }) {
               currentUser={currentUser}
               setEditTask={setEditTask}
               fetchTasks={fetchTasks}
+              users={users}
             />
           ))}
         </Col>
@@ -99,6 +113,7 @@ function Tasks({ currentUser }) {
               currentUser={currentUser}
               setEditTask={setEditTask}
               fetchTasks={fetchTasks}
+              users={users}
             />
           ))}
         </Col>
