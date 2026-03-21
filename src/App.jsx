@@ -55,7 +55,13 @@ function App() {
           />
           <Route
             path="/tasks"
-            element={currentUser ? <Tasks /> : <Navigate to="/login" replace />}
+            element={
+              currentUser ? (
+                <Tasks currentUser={currentUser} />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
           />
         </Routes>
       </Container>
