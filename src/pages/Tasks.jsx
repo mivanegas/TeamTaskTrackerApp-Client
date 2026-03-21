@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import Task from "../components/Task";
+import AddTask from "../components/AddTask";
+import EditTask from "../components/EditTask";
 import axios from "axios";
 
 const API_PREFIX = import.meta.env.VITE_API_PREFIX;
 
-function Tasks() {
+function Tasks({ currentUser }) {
   const [planningTasks, setPlanningTasks] = useState([]);
   const [todoTasks, setTodoTasks] = useState([]);
   const [inprogressTasks, setInprogressTasks] = useState([]);
   const [doneTasks, setDoneTasks] = useState([]);
+  const [editTask, setEditTask] = useState(null);
 
   useEffect(() => {
     fetchTasks();
@@ -30,16 +33,25 @@ function Tasks() {
 
   return (
     <div>
-      <h1 className="display-5 mb-3">Tasks</h1>
-      <hr />
-      <Row className="">
+      <div className="d-flex justify-content-between align-items-center">
+        <h1 className="display-5 pb-3">Tasks</h1>
+        <AddTask fetchTasks={fetchTasks} />
+      </div>
+
+      <Row>
         {/* Planning */}
         <Col md={3}>
           <p className="lead fw-bold border rounded py-1 px-3 bg-danger-subtle">
             PLANNING
           </p>
           {planningTasks.map((task) => (
-            <Task key={task._id} task={task} />
+            <Task
+              key={task._id}
+              task={task}
+              currentUser={currentUser}
+              setEditTask={setEditTask}
+              fetchTasks={fetchTasks}
+            />
           ))}
         </Col>
 
@@ -49,7 +61,13 @@ function Tasks() {
             TO DO
           </p>
           {todoTasks.map((task) => (
-            <Task key={task._id} task={task} />
+            <Task
+              key={task._id}
+              task={task}
+              currentUser={currentUser}
+              setEditTask={setEditTask}
+              fetchTasks={fetchTasks}
+            />
           ))}
         </Col>
 
@@ -59,7 +77,13 @@ function Tasks() {
             IN PROGRESS
           </p>
           {inprogressTasks.map((task) => (
-            <Task key={task._id} task={task} />
+            <Task
+              key={task._id}
+              task={task}
+              currentUser={currentUser}
+              setEditTask={setEditTask}
+              fetchTasks={fetchTasks}
+            />
           ))}
         </Col>
 
@@ -69,10 +93,23 @@ function Tasks() {
             DONE
           </p>
           {doneTasks.map((task) => (
-            <Task key={task._id} task={task} />
+            <Task
+              key={task._id}
+              task={task}
+              currentUser={currentUser}
+              setEditTask={setEditTask}
+              fetchTasks={fetchTasks}
+            />
           ))}
         </Col>
       </Row>
+      {editTask && (
+        <EditTask
+          task={editTask}
+          setEditTask={setEditTask}
+          fetchTasks={fetchTasks}
+        />
+      )}
     </div>
   );
 }
