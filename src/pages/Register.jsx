@@ -44,9 +44,11 @@ function Register() {
 
   return (
     <>
-      <h1 className="display-6">Register</h1>
+      <h1 className="display-6" style={{ fontFamily: "girly-font" }}>
+        Register
+      </h1>
       <Form style={{ width: "max-content", margin: "auto" }}>
-        <Form.Group className="mb-3">
+        <Form.Group className="m-3">
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
@@ -56,7 +58,7 @@ function Register() {
             onChange={(e) => setFullName(e.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3">
+        <Form.Group className="m-3">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
@@ -67,7 +69,7 @@ function Register() {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3">
+        <Form.Group className="m-3">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -76,7 +78,7 @@ function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3">
+        <Form.Group className="m-3">
           <Form.Label>Department</Form.Label>
           <Form.Control
             type="text"
@@ -86,7 +88,11 @@ function Register() {
             onChange={(e) => setDepartment(e.target.value)}
           />
         </Form.Group>
-        <Button variant="success" onClick={handleRegister}>
+        <Button
+          variant="success"
+          onClick={handleRegister}
+          className="registerBtn m-3"
+        >
           Register
         </Button>
       </Form>

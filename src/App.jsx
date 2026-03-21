@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { Container, Spinner } from "react-bootstrap";
 import axios from "axios";
 
-import Home from "./pages/Home";
+import About from "./pages/About";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Tasks from "./pages/Tasks";
@@ -42,12 +42,10 @@ function App() {
   return (
     <BrowserRouter>
       <AppNavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      <Container
-        className="page-wrapper my-3 p-5"
-        style={{ width: "max-content" }}
-      >
+      <Container className="page-wrapper my-4 p-4">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<About />} />
+          <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
           <Route
             path="/login"

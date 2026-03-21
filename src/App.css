@@ -1,10 +1,134 @@
+@font-face {
+  font-family: "girly-font";
+  src: url("/GladoliaDEMO-Regular.otf") format("opentype");
+}
+
+body {
+  font-family: monospace;
+}
+
+.brand-font {
+  font-family: "girly-font", Georgia, "Times New Roman", Times, serif;
+  font-size: 1.5em;
+}
+
 .page-wrapper {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  max-width: 1250px;
 }
 
 /* Dropdown arrows in tasks */
 select.form-select:disabled {
   background-image: none;
+}
+
+.deleteBtn {
+  background-color: #6e4784;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(110, 71, 132, 0.35);
+  transition: all 0.2s ease-in-out;
+}
+
+.deleteBtn:hover {
+  background-color: #855a9c;
+  box-shadow: 0 6px 18px rgba(110, 71, 132, 0.5);
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+
+.editBtn {
+  background-color: #f2ecf6;
+  color: #6e4784;
+  border-radius: 8px;
+  border: 1px solid #c9b0d9;
+  box-shadow: 0 4px 12px rgba(110, 71, 132, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.editBtn:hover {
+  background-color: #e3d5ed;
+  box-shadow: 0 6px 18px rgba(110, 71, 132, 0.35);
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+
+.addTaskBtn {
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #d3d7e9 0%,
+    #b3b6e3 5%,
+    #ceb8ec 10%,
+    #b0cbda 15%,
+    #d5e5ec 20%,
+    #b3b6e3 25%,
+    #aed8d5 30%,
+    #c8e1de 35%,
+    #d3d7e9 50%,
+    #e5f4fa 80%,
+    #d3d7e9 100%
+  ) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: black;
+  font-weight: 600 !important;
+  box-shadow: 0 5px 10px rgba(124, 125, 190, 0.33) !important;
+  transition: all 0.18s ease-in-out !important;
+}
+
+.addTaskBtn:hover {
+  box-shadow: 0 10px 40px rgba(124, 125, 190, 0.5) !important;
+  color: black;
+  cursor: pointer !important;
+}
+
+.loginBtn,
+.registerBtn {
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #d3d7e9 0%,
+    #b3b6e3 5%,
+    #ceb8ec 10%,
+    #b0cbda 15%,
+    #d5e5ec 20%,
+    #b3b6e3 25%,
+    #aed8d5 30%,
+    #c8e1de 35%,
+    #d3d7e9 50%,
+    #e5f4fa 80%,
+    #d3d7e9 100%
+  ) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: black;
+  font-weight: 600 !important;
+  box-shadow: 0 5px 10px rgba(124, 125, 190, 0.33) !important;
+  transition: all 0.18s ease-in-out !important;
+  padding: 10px 15px;
+}
+
+.loginBtn:hover,
+.registerBtn:hover {
+  box-shadow: 0 10px 20px rgba(124, 125, 190, 0.5) !important;
+  color: black;
+  cursor: pointer !important;
+}
+
+.custom-nav .nav-link {
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.custom-nav .nav-link:hover {
+  color: #b66998 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-nav .nav-link.active {
+  color: #b66998 !important;
+  border-bottom: 2px solid #b66998;
 }

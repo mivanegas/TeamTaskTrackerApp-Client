@@ -46,7 +46,7 @@ function AddTask({ fetchTasks }) {
 
   return (
     <>
-      <Button variant="dark" onClick={handleShow}>
+      <Button onClick={handleShow} className="addTaskBtn">
         Add task
       </Button>
 

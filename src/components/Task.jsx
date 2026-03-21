@@ -41,7 +41,7 @@ function Task({ task, currentUser, setEditTask, fetchTasks, users }) {
 
   return (
     <>
-      <Card className="mt-3" style={{ width: "16rem" }}>
+      <Card className="mt-3">
         <Card.Header className="text-muted">
           Created: {new Date(task.createdAt).toLocaleDateString()}
         </Card.Header>
@@ -82,9 +82,9 @@ function Task({ task, currentUser, setEditTask, fetchTasks, users }) {
           <div className="d-flex mt-2">
             {canEdit && (
               <Button
-                variant="warning"
+                variant="dark"
                 size="sm"
-                className="w-100 mx-1"
+                className="w-100 mx-1 editBtn"
                 onClick={() => setEditTask(task)}
               >
                 Edit
@@ -92,9 +92,9 @@ function Task({ task, currentUser, setEditTask, fetchTasks, users }) {
             )}
             {isTaskCreator && (
               <Button
-                variant="danger"
+                variant="light"
                 size="sm"
-                className="w-100 mx-1"
+                className="w-100 mx-1 deleteBtn"
                 onClick={() => deleteTask(task._id)}
               >
                 Delete

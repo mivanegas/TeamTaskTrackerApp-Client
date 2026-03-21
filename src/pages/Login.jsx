@@ -42,9 +42,11 @@ function Login({ setCurrentUser }) {
 
   return (
     <>
-      <h1 className="display-6">Login</h1>
+      <h1 className="display-6" style={{ fontFamily: "girly-font" }}>
+        Login
+      </h1>
       <Form style={{ width: "max-content", margin: "auto" }}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="m-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
@@ -55,7 +57,7 @@ function Login({ setCurrentUser }) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="m-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -65,7 +67,7 @@ function Login({ setCurrentUser }) {
           />
         </Form.Group>
 
-        <Button variant="dark" onClick={handleLogin}>
+        <Button variant="dark" onClick={handleLogin} className="loginBtn m-3">
           Login
         </Button>
       </Form>

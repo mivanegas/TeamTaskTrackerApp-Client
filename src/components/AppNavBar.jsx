@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../assets/logo.png";
+import diary from "../assets/diary.png";
 import { NavLink, useNavigate } from "react-router";
 import AppAlert from "./AppAlert";
 import axios from "axios";
@@ -45,12 +45,12 @@ function AppNavBar({ currentUser, setCurrentUser }) {
             {" "}
             <img
               alt=""
-              src={logo}
-              width="30"
-              height="30"
+              src={diary}
+              width="40"
+              height="40"
               className="d-inline-block align-top"
             />{" "}
-            Task Tracker
+            <span className="brand-font">Task Tracker</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -58,9 +58,11 @@ function AppNavBar({ currentUser, setCurrentUser }) {
               <Nav.Link as={NavLink} to="/about">
                 About
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/contact">
-                Contact
-              </Nav.Link>
+              {currentUser && (
+                <Nav.Link as={NavLink} to="/tasks">
+                  Tasks
+                </Nav.Link>
+              )}
             </Nav>
             <Nav>
               {currentUser ? (

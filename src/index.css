@@ -1,9 +1,10 @@
 body {
-  background-color: #eee;
+  background: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+  min-height: 100vh;
 }
 
 .custom-nav {
-  /* background: linear-gradient(
+  background: linear-gradient(
     122.3deg,
     rgb(111, 71, 133) 14.6%,
     rgb(232, 129, 166) 29.6%,
@@ -11,12 +12,12 @@ body {
     rgb(244, 166, 215) 56.7%,
     rgb(154, 219, 232) 68.7%,
     rgb(238, 226, 159) 84.8%
-  ); */
-
+  );
+  /* 
   background: linear-gradient(
     109.6deg,
     rgb(9, 9, 121) 11.2%,
     rgb(144, 6, 161) 53.7%,
     rgb(0, 212, 255) 100.2%
-  );
+  ); */
 }

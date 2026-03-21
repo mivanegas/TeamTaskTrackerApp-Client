@@ -4,6 +4,7 @@ import Task from "../components/Task";
 import AddTask from "../components/AddTask";
 import EditTask from "../components/EditTask";
 import axios from "axios";
+import computer from "../assets/computer.png";
 
 const API_PREFIX = import.meta.env.VITE_API_PREFIX;
 
@@ -45,13 +46,16 @@ function Tasks({ currentUser }) {
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center">
-        <h1 className="display-5 pb-3">Tasks</h1>
+        <img src={computer} width={50} alt="retro computer" className="mb-3" />
+        <h1 className="display-5 pb-3" style={{ fontFamily: "girly-font" }}>
+          Tasks
+        </h1>
         <AddTask fetchTasks={fetchTasks} />
       </div>
 
-      <Row>
+      <Row className="g-3">
         {/* Planning */}
-        <Col md={3}>
+        <Col xs={12} sm={6} md={3}>
           <p className="lead fw-bold border rounded py-1 px-3 bg-danger-subtle">
             PLANNING
           </p>
@@ -68,7 +72,7 @@ function Tasks({ currentUser }) {
         </Col>
 
         {/* To do */}
-        <Col md={3}>
+        <Col xs={12} sm={6} md={3}>
           <p className="lead fw-bold border rounded py-1 px-3 bg-primary-subtle">
             TO DO
           </p>
@@ -85,7 +89,7 @@ function Tasks({ currentUser }) {
         </Col>
 
         {/* In Progress */}
-        <Col md={3}>
+        <Col xs={12} sm={6} md={3}>
           <p className="lead fw-bold border rounded py-1 px-3 bg-warning-subtle">
             IN PROGRESS
           </p>
@@ -102,7 +106,7 @@ function Tasks({ currentUser }) {
         </Col>
 
         {/* Done */}
-        <Col md={3}>
+        <Col xs={12} sm={6} md={3}>
           <p className="lead fw-bold border rounded py-1 px-3 bg-success-subtle">
             DONE
           </p>
