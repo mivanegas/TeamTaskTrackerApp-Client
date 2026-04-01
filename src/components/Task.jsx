@@ -134,7 +134,7 @@ function Task({ task, currentUser, setEditTask, fetchTasks, users }) {
           </div>
         </Card.Body>
         <Card.Footer className="text-muted">
-          Deadline: {new Date(task.createdAt).toLocaleDateString()}
+          Deadline: {new Date(task.deadline).toLocaleDateString()}
         </Card.Footer>
       </Card>
     </>
