@@ -10,7 +10,9 @@ function EditTask({ task, setEditTask, fetchTasks }) {
   const [show, setShow] = useState(true);
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
-  const [deadline, setDeadline] = useState(task.deadline);
+  const [deadline, setDeadline] = useState(
+    task.deadline ? task.deadline.split("T")[0] : "",
+  );
   const [priority, setPriority] = useState(task.priority);
   const [status, setStatus] = useState(task.status);
 
